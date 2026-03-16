@@ -25,6 +25,11 @@ const steps = [
   },
   {
     num: "05",
+    title: "Testing",
+    description: "Conducting rigorous automated and manual testing to ensure security, performance, and cross-device compatibility.",
+  },
+  {
+    num: "06",
     title: "Launch",
     description: "Deploying the product to production, monitoring performance, and providing ongoing support for future growth.",
   },

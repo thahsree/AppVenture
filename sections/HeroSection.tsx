@@ -1,10 +1,10 @@
 "use client";
 
+import { MeshDistortMaterial, OrbitControls, Sphere } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
-import React, { useRef, Component, ErrorInfo, ReactNode } from "react";
+import { Component, ReactNode, useRef } from "react";
 import * as THREE from "three";
 
 class ErrorBoundary extends Component<{children: ReactNode, fallback: ReactNode}, {hasError: boolean}> {
@@ -128,17 +128,17 @@ export default function HeroSection() {
           <motion.div
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/4 right-10 glass-card p-4 rounded-2xl z-10 hidden md:block"
+            className="absolute top-[15%] right-4 md:right-10 glass-card p-3 md:p-4 z-10"
           >
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                <svg className="w-4 h-4 md:w-5 md:h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-bold text-white">Performance</p>
-                <p className="text-xs text-gray-400">99.9% Uptime</p>
+                <p className="text-xs md:text-sm font-bold text-white">Performance</p>
+                <p className="text-[10px] md:text-xs text-gray-400">99.9% Uptime</p>
               </div>
             </div>
           </motion.div>
@@ -146,17 +146,17 @@ export default function HeroSection() {
           <motion.div
             animate={{ y: [0, 20, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-1/4 left-0 glass-card p-4 rounded-2xl z-10 hidden md:block"
+            className="absolute bottom-[15%] left-2 md:left-0 glass-card p-3 md:p-4 z-10"
           >
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-                <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                <svg className="w-4 h-4 md:w-5 md:h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-bold text-white">Security</p>
-                <p className="text-xs text-gray-400">Enterprise Grade</p>
+                <p className="text-xs md:text-sm font-bold text-white">Security</p>
+                <p className="text-[10px] md:text-xs text-gray-400">Enterprise Grade</p>
               </div>
             </div>
           </motion.div>
