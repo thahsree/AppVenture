@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -34,7 +34,7 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 z-50">
             <motion.div
@@ -43,7 +43,7 @@ export default function Navbar() {
               transition={{ duration: 0.5 }}
               className="font-bold text-3xl tracking-tighter flex items-center"
             >
-              <span className="text-gradient lowercase">zsk</span>
+              <span className="text-gradient font-bold tracking-tight">AppVenture</span>
             </motion.div>
           </Link>
 

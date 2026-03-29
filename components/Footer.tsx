@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
             <Link href="/" className="font-bold text-3xl tracking-tighter flex items-center mb-4">
-              <span className="text-gradient lowercase">zsk</span>
+              <span className="text-gradient font-bold tracking-tight">AppVenture</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               We design and develop high-performance websites, mobile apps, and SaaS platforms that help businesses grow.
@@ -79,7 +79,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500">
-          <p>© {currentYear} ZSK technologies. All rights reserved.</p>
+          <p>© {currentYear} AppVenture. All rights reserved.</p>
           <p className="mt-2 md:mt-0">Designed & Built for the Future.</p>
         </div>
       </div>

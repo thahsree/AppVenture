@@ -1,8 +1,8 @@
 "use client";
 
-import { Environment, Float, OrbitControls, RoundedBox, useGLTF, useTexture, Html } from "@react-three/drei";
+import { Environment, Float, OrbitControls, Preload, useGLTF, useTexture } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { Component, ReactNode, Suspense, useEffect, useRef } from "react";
 import * as THREE from "three";
@@ -26,7 +26,6 @@ class ErrorBoundary extends Component<{children: ReactNode, fallback: ReactNode}
   }
 }
 
-import { useState } from "react";
 
 function DeviceScene() {
   const { scene, nodes } = useGLTF("/scene.glb");
@@ -67,7 +66,7 @@ function DeviceScene() {
         <primitive 
           object={scene} 
           scale={6.5} 
-          position={[0, -0.2, 0]} 
+          position={[0, 0.2, 0]} 
           rotation={[0, 0, 0]}
         />
       </Float>
@@ -79,8 +78,11 @@ useGLTF.preload("/scene.glb");
 useTexture.preload("/SS.png");
 
 export default function HeroSection() {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: false, amount: 0.1 });
+
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section ref={containerRef} className="relative min-h-screen flex items-center pt-25 overflow-hidden">
       {/* Background gradients */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] -z-10" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] -z-10" />
@@ -138,19 +140,34 @@ export default function HeroSection() {
           className="h-[500px] lg:h-[700px] w-full relative"
         >
           <div className="absolute inset-0 z-0 flex items-center justify-center">
-            <ErrorBoundary fallback={
-              <div className="w-64 h-64 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-primary to-accent opacity-30 blur-3xl animate-pulse" />
-            }>
-              <Canvas camera={{ position: [0, 0, 5], fov: 20 }}>
-                <Suspense fallback={null}>
-                  <ambientLight intensity={3.5} />
-                  <directionalLight position={[5, 10, 5]} intensity={4} color="#ffffff" />
-                  <DeviceScene />
-                  <Environment preset="city" />
-                  <OrbitControls enableZoom={true} makeDefault />
-                </Suspense>
-              </Canvas>
-            </ErrorBoundary>
+            {isInView ? (
+              <ErrorBoundary fallback={
+                <div className="w-64 h-64 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-primary to-accent opacity-30 blur-3xl animate-pulse" />
+              }>
+                <Canvas 
+                  camera={{ position: [0, 0, 5], fov: 20 }} 
+                  dpr={[1, 1.5]} 
+                  performance={{ min: 0.5 }}
+                  style={{ touchAction: 'none', pointerEvents: 'auto' }}
+                >
+                  <Suspense fallback={null}>
+                    <ambientLight intensity={3.5} />
+                    <directionalLight position={[5, 10, 5]} intensity={4} color="#ffffff" />
+                    <DeviceScene />
+                    <Environment preset="city" resolution={256} />
+                    <OrbitControls 
+                      enableZoom={true} 
+                      enableRotate={true}
+                      enablePan={false}
+                      makeDefault 
+                    />
+                    <Preload all />
+                  </Suspense>
+                </Canvas>
+              </ErrorBoundary>
+            ) : (
+              <div className="w-64 h-64 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-primary to-accent opacity-10 blur-3xl" />
+            )}
           </div>
           
           {/* Floating elements overlay */}

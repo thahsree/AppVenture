@@ -60,31 +60,44 @@ export default function ProcessSection() {
         </div>
 
         <div className="relative">
-          {/* Connecting line */}
-          <div className="absolute left-[27px] md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-translate-x-1/2" />
+          {/* Connecting line - Dynamic hidden/shown on mobile vs desktop */}
+          <div className="absolute left-[23px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary/50 via-primary/10 to-transparent md:-translate-x-1/2" />
           
-          <div className="space-y-12">
+          <div className="space-y-16">
             {steps.map((step, index) => (
-              <div key={index} className={`relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
+              <div key={index} className="relative flex items-center md:block">
                 
                 {/* Step Marker */}
-                <div className="absolute left-0 md:left-1/2 w-14 h-14 bg-background border-2 border-primary/30 rounded-full flex items-center justify-center -translate-x-1/2 z-10 text-primary font-bold shadow-[0_0_15px_rgba(99,102,241,0.2)]">
+                <div className="absolute left-0 md:left-1/2 w-12 h-12 bg-[#0a0a0a] border-2 border-primary rounded-full flex items-center justify-center -translate-x-[6px] md:-translate-x-1/2 z-20 text-white font-bold text-lg shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all duration-300 group-hover:scale-110">
                   {step.num}
                 </div>
 
-                {/* Content Box */}
-                <motion.div
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className={`w-full md:w-1/2 pl-20 md:pl-0 ${index % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16 md:text-left"}`}
-                >
-                  <div className="glass p-6 rounded-2xl hover:bg-white/5 transition-colors border border-white/5">
-                    <h3 className="text-2xl font-bold text-white mb-3">{step.title}</h3>
-                    <p className="text-gray-400">{step.description}</p>
-                  </div>
-                </motion.div>
+                <div className={`flex w-full ${index % 2 === 0 ? "md:justify-start" : "md:justify-end"}`}>
+                  <motion.div
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.1 * index }}
+                    className={`w-full md:w-[42%] ml-12 md:ml-0 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}
+                  >
+                    <div className="group relative glass p-8 rounded-3xl hover:bg-white/5 transition-all duration-300 border border-white/5 hover:border-primary/30 shadow-xl overflow-hidden">
+                      {/* Subtle accent glow inside card */}
+                      <div className="absolute -top-10 -left-10 w-24 h-24 bg-primary/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                      
+                      <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">
+                        {step.num}. {step.title}
+                      </h3>
+                      <p className="text-gray-400 leading-relaxed font-medium">
+                        {step.description}
+                      </p>
+                      
+                      {/* Number badge for mobile visibility if markers are hidden */}
+                      <div className="md:hidden absolute top-4 right-4 text-primary font-black opacity-20 text-3xl italic">
+                        {step.num}
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
               </div>
             ))}
           </div>

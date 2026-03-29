@@ -75,32 +75,52 @@ export default function TechStackSection() {
           {stack.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ y: -10 }}
-              className={`group p-8 rounded-3xl border ${item.border} bg-gradient-to-br ${item.color} backdrop-blur-sm hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] transition-all duration-300 text-left relative overflow-hidden will-change-transform`}
+              transition={{ delay: index * 0.1, duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+              whileHover={{ 
+                scale: 1.02,
+                translateY: -5,
+                transition: { duration: 0.3, ease: "easeOut" }
+              }}
+              className="group relative p-0.5 rounded-[2rem] overflow-hidden bg-white/5 hover:bg-white/10 transition-all duration-500 will-change-transform"
             >
-              <div className="relative z-10">
-                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                  <item.icon className="w-7 h-7 text-white" />
+              {/* Animated Border Gradient */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-20 group-hover:opacity-100 transition-opacity duration-500 blur-2xl`} />
+              
+              <div className="relative h-full bg-[#0d0d0d]/90 backdrop-blur-xl p-8 rounded-[1.9rem] flex flex-col z-10 border border-white/10 group-hover:border-white/20 transition-colors duration-500 h-full">
+                {/* Icon Container */}
+                <div className="relative mb-8">
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-white/5`}>
+                    <item.icon className="w-8 h-8 text-white" />
+                  </div>
+                  {/* Subtle Glow behind icon */}
+                  <div className={`absolute -inset-2 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-500 -z-10`} />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">{item.title}</h3>
-                <p className="text-gray-300 leading-relaxed font-medium">
+
+                <h3 className="text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-primary transition-colors duration-300">
+                  {item.title}
+                </h3>
+                
+                <p className="text-gray-400 leading-relaxed font-medium mb-8 group-hover:text-gray-300 transition-colors duration-300">
                   {item.desc}
                 </p>
-              </div>
-              
-              {/* Pattern Background */}
-              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                <item.icon className="w-32 h-32 text-white" />
+
+                {/* Interactive Indicator */}
+                <div className="mt-auto flex items-center text-xs font-bold tracking-widest uppercase text-gray-500 group-hover:text-primary transition-colors duration-300">
+                  <span className="mr-2">Innovation Driven</span>
+                  <div className="h-px w-8 bg-gray-800 group-hover:w-12 group-hover:bg-primary transition-all duration-500" />
+                </div>
+
+                {/* Decorative floating icon */}
+                <div className="absolute -bottom-6 -right-6 opacity-[0.03] group-hover:opacity-[0.08] group-hover:scale-150 transition-all duration-700 -rotate-12 pointer-events-none">
+                  <item.icon className="w-40 h-40 text-white" />
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-        
-        
       </div>
     </section>
   );
