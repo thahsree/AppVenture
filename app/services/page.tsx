@@ -51,7 +51,7 @@ const detailedServices = [
     title: "AI & Automation",
     subtitle: "AI integrations and business automation.",
     description: "Leverage the power of artificial intelligence to optimize your operations. From custom LLM integrations to automated workflow systems, we help you stay ahead of the curve by integrating intelligent solutions into your digital products.",
-    image: "/AI.png",
+    image: "/Ai.png",
     features: ["Machine Learning Models", "NLP & Chatbots", "Workflow Automation", "Predictive Analytics"],
     color: "from-amber-500/20 to-orange-500/20",
     border: "border-orange-500/50",
