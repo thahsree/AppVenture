@@ -7,7 +7,7 @@ const testimonials = [
   {
     name: "Sarah Jenkins",
     role: "CEO, TechNova",
-    content: "AppVenture completely transformed our digital presence. Their team's engineering expertise and attention to design detail gave us a SaaS platform that perfectly matches our vision.",
+    content: "ZSK technologies completely transformed our digital presence. Their team's engineering expertise and attention to design detail gave us a SaaS platform that perfectly matches our vision.",
     rating: 5,
   },
   {
@@ -19,7 +19,7 @@ const testimonials = [
   {
     name: "Elena Rodriguez",
     role: "CTO, FinPro Solutions",
-    content: "The custom dashboard they developed is lightning fast and incredibly intuitive. I highly recommend AppVenture to any business looking for top-tier software engineering.",
+    content: "The custom dashboard they developed is lightning fast and incredibly intuitive. I highly recommend zsk to any business looking for top-tier software engineering.",
     rating: 5,
   },
 ];

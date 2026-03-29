@@ -1,10 +1,10 @@
 "use client";
 
-import { MeshDistortMaterial, OrbitControls, Sphere } from "@react-three/drei";
+import { Environment, Float, OrbitControls, RoundedBox, useGLTF, useTexture, Html } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Component, ReactNode, useRef } from "react";
+import { Component, ReactNode, Suspense, useEffect, useRef } from "react";
 import * as THREE from "three";
 
 class ErrorBoundary extends Component<{children: ReactNode, fallback: ReactNode}, {hasError: boolean}> {
@@ -26,30 +26,57 @@ class ErrorBoundary extends Component<{children: ReactNode, fallback: ReactNode}
   }
 }
 
-function AnimatedSphere() {
-  const meshRef = useRef<THREE.Mesh>(null);
+import { useState } from "react";
+
+function DeviceScene() {
+  const { scene, nodes } = useGLTF("/scene.glb");
+  const texture = useTexture("/SS.png");
+  const groupRef = useRef<THREE.Group>(null);
+  
+  // Apply maximum texture quality without color shifting
+  texture.flipY = true;
+  texture.needsUpdate = true;
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+
+  // Map the screenshot perfectly to the precise, obfuscated screen mesh
+  useEffect(() => {
+    if (!scene || !nodes) return;
+    
+    const screenMesh = nodes["xXDHkMplTIDAXLN"] as any;
+    if (screenMesh && screenMesh.isMesh) {
+      screenMesh.material = new THREE.MeshBasicMaterial({ 
+        map: texture, 
+        toneMapped: false,
+        transparent: true
+      });
+      screenMesh.material.needsUpdate = true;
+    }
+  }, [scene, nodes, texture]);
   
   useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.2;
-      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.3;
+    if (groupRef.current) {
+      groupRef.current.rotation.y = Math.sin(state.clock.getElapsedTime() * 0.4) * 0.08 + Math.PI;
     }
   });
 
   return (
-    <Sphere args={[1, 100, 200]} scale={2.4} ref={meshRef}>
-      <MeshDistortMaterial
-        color="#22d3ee"
-        attach="material"
-        distort={0.4}
-        speed={2}
-        roughness={0.2}
-        metalness={0.8}
-        wireframe={true}
-      />
-    </Sphere>
+    <group ref={groupRef}>
+      <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
+        <primitive 
+          object={scene} 
+          scale={6.5} 
+          position={[0, -0.2, 0]} 
+          rotation={[0, 0, 0]}
+        />
+      </Float>
+    </group>
   );
 }
+
+useGLTF.preload("/scene.glb");
+useTexture.preload("/SS.png");
 
 export default function HeroSection() {
   return (
@@ -114,12 +141,14 @@ export default function HeroSection() {
             <ErrorBoundary fallback={
               <div className="w-64 h-64 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-primary to-accent opacity-30 blur-3xl animate-pulse" />
             }>
-              <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-                <ambientLight intensity={0.5} />
-                <directionalLight position={[10, 10, 5]} intensity={2} color="#6366f1" />
-                <directionalLight position={[-10, -10, -5]} intensity={1} color="#22d3ee" />
-                <AnimatedSphere />
-                <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
+              <Canvas camera={{ position: [0, 0, 5], fov: 30 }}>
+                <Suspense fallback={null}>
+                  <ambientLight intensity={3.5} />
+                  <directionalLight position={[5, 10, 5]} intensity={4} color="#ffffff" />
+                  <DeviceScene />
+                  <Environment preset="city" />
+                  <OrbitControls enableZoom={false} makeDefault />
+                </Suspense>
               </Canvas>
             </ErrorBoundary>
           </div>
@@ -128,7 +157,7 @@ export default function HeroSection() {
           <motion.div
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[15%] right-4 md:right-10 glass-card p-3 md:p-4 z-10"
+            className="absolute top-[15%] right-4 md:right-10 glass-card p-3 md:p-4 z-10 will-change-transform"
           >
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/20 flex items-center justify-center">
@@ -146,7 +175,7 @@ export default function HeroSection() {
           <motion.div
             animate={{ y: [0, 20, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-[15%] left-2 md:left-0 glass-card p-3 md:p-4 z-10"
+            className="absolute bottom-[15%] left-2 md:left-0 glass-card p-3 md:p-4 z-10 will-change-transform"
           >
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-accent/20 flex items-center justify-center">

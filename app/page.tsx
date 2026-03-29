@@ -1,10 +1,11 @@
-import HeroSection from "@/sections/HeroSection";
-import SocialProofSection from "@/sections/SocialProofSection";
-import ServicesSection from "@/sections/ServicesSection";
-import FeaturedProjectsSection from "@/sections/FeaturedProjectsSection";
-import ProcessSection from "@/sections/ProcessSection";
-import TestimonialsSection from "@/sections/TestimonialsSection";
+import ClientsSection from "@/sections/ClientsSection";
 import CTASection from "@/sections/CTASection";
+import HeroSection from "@/sections/HeroSection";
+import ProcessSection from "@/sections/ProcessSection";
+import ServicesSection from "@/sections/ServicesSection";
+import SocialProofSection from "@/sections/SocialProofSection";
+import TechStackSection from "@/sections/TechStackSection";
+import TestimonialsSection from "@/sections/TestimonialsSection";
 
 export default function Home() {
   return (
@@ -12,7 +13,8 @@ export default function Home() {
       <HeroSection />
       <SocialProofSection />
       <ServicesSection />
-      <FeaturedProjectsSection />
+      <TechStackSection />
+      <ClientsSection />
       <ProcessSection />
       <TestimonialsSection />
       <CTASection />

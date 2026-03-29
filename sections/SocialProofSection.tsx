@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, animate } from "framer-motion";
+import { animate, motion, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 function Counter({ from = 0, to, duration = 2 }: { from?: number; to: number; duration?: number }) {
@@ -43,7 +43,7 @@ export default function SocialProofSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="glass-card p-8 text-center"
+              className="glass-card p-8 text-center will-change-transform will-change-opacity"
             >
               <div className="text-5xl font-bold text-white mb-2">
                 <Counter to={stat.value} />
@@ -52,25 +52,6 @@ export default function SocialProofSection() {
               <p className="text-gray-400 font-medium">{stat.label}</p>
             </motion.div>
           ))}
-        </div>
-
-        <div className="mt-20">
-          <p className="text-center text-sm font-semibold text-gray-500 uppercase tracking-wider mb-8">
-            Trusted by innovative teams worldwide
-          </p>
-          <div className="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-            {/* Fake client logos just text or placeholder SVGs */}
-            {[1, 2, 3, 4, 5].map((item) => (
-              <motion.div
-                key={item}
-                whileHover={{ scale: 1.1, opacity: 1 }}
-                className="flex items-center space-x-2 grayscale transition-all duration-300 hover:grayscale-0 backdrop-blur-md"
-              >
-                <div className="w-8 h-8 rounded bg-gradient-to-tr from-white/20 relative" />
-                <span className="text-xl font-bold tracking-tight text-white/80">Company {item}</span>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

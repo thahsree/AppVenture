@@ -25,7 +25,7 @@ const allProjects = [
     title: "Apex E-Commerce",
     category: "Websites",
     image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800",
-    description: "High-conversion modern storefront built with Next.js and Headless CMS.",
+    description: "High-conversion modern storefront built with a modern API-driven architecture.",
   },
   {
     id: "taskmaster",
@@ -46,7 +46,7 @@ const allProjects = [
     title: "Studio X Portfolio",
     category: "Websites",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800",
-    description: "Award-winning immersive WebGL portfolio for a creative agency.",
+    description: "Award-winning immersive 3D portfolio for a creative agency.",
   },
 ];
 

@@ -10,7 +10,7 @@ const detailedServices = [
     id: "web-development",
     title: "Web Development",
     subtitle: "High-performance websites and platforms.",
-    description: "We build blazing-fast, SEO-optimized, and highly responsive web applications using the latest modern stacks like Next.js, React, and Node.js. Whether it's a corporate site or a complex e-commerce platform, our web solutions are designed for conversion and scalability.",
+    description: "We build blazing-fast, SEO-optimized, and highly responsive web applications using modern, enterprise-grade architectures. Whether it's a corporate site or a complex e-commerce platform, our web solutions are designed for conversion and scalability.",
     icon: Monitor,
     features: ["Custom Web Applications", "E-Commerce Platforms", "CMS Development", "Performance Optimization"],
     color: "from-blue-500/20 to-cyan-500/20",
@@ -20,7 +20,7 @@ const detailedServices = [
     id: "mobile-apps",
     title: "Mobile App Development",
     subtitle: "Native and cross-platform iOS and Android apps.",
-    description: "Engage your users on the go with beautifully designed mobile applications. We specialize in React Native and native development to deliver smooth, reliable, and feature-rich apps that stand out in the App Store and Google Play.",
+    description: "Engage your users on the go with beautifully designed mobile applications. We utilize powerful cross-platform frameworks and native development to deliver smooth, reliable, and feature-rich apps that stand out in the App Store and Google Play.",
     icon: Smartphone,
     features: ["iOS Development", "Android Development", "Cross-Platform Frameworks", "Mobile App UI/UX"],
     color: "from-purple-500/20 to-pink-500/20",
@@ -95,7 +95,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.7 }}
-                className={`flex flex-col md:flex-row gap-12 items-center ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+                className={`flex flex-col md:flex-row gap-12 items-center will-change-transform will-change-opacity ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
               >
                 {/* Visual side */}
                 <div className="w-full md:w-1/2">

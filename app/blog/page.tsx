@@ -30,7 +30,7 @@ const posts = [
     date: "February 18, 2026",
     author: "Taylor Reed",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800",
-    excerpt: "Learn how to achieve a perfect Lighthouse score using Next.js, image optimization, and dynamic rendering strategies.",
+    excerpt: "Learn how to achieve a perfect Lighthouse score using modern architectures, image optimization, and dynamic rendering strategies.",
   },
 ];
 

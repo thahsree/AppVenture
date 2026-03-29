@@ -41,10 +41,9 @@ export default function Navbar() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="font-bold text-2xl tracking-tighter flex items-center"
+              className="font-bold text-3xl tracking-tighter flex items-center"
             >
-              <span className="text-white">App</span>
-              <span className="text-gradient">Venture</span>
+              <span className="text-gradient lowercase">zsk</span>
             </motion.div>
           </Link>
 

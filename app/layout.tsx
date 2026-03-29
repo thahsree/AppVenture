@@ -7,20 +7,20 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AppVenture | Futuristic Web & App Development in Kannur",
+  title: "ZSK technologies | Futuristic Web & App Development in Kannur",
   description: "We design and develop high-performance websites, mobile apps, and SaaS platforms that help businesses grow and scale.",
-  keywords: ["app development", "web development agency", "SaaS platforms", "mobile apps", "Next.js", "React engineering"],
+  keywords: ["app development", "web development agency", "SaaS platforms", "mobile apps", "Digital Innovation", "Scale Engineering", "Enterprise Solutions"],
   openGraph: {
-    title: "AppVenture | Engineering Excellence",
+    title: "ZSK technologies | Engineering Excellence",
     description: "Build Scalable Digital Products for Modern Businesses.",
-    url: "https://appventure.dev",
-    siteName: "AppVenture",
+    url: "https://zsk.tech",
+    siteName: "ZSK technologies",
     images: [
       {
-        url: "https://appventure.dev/og-image.png",
+        url: "https://zsk.tech/og-image.png",
         width: 1200,
         height: 630,
-        alt: "AppVenture Modern Engineering",
+        alt: "ZSK technologies Modern Engineering",
       },
     ],
     locale: "en_US",
@@ -28,11 +28,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AppVenture | Web & App Development",
+    title: "ZSK technologies | Web & App Development",
     description: "Build Scalable Digital Products for Modern Businesses.",
-    images: ["https://appventure.dev/og-image.png"],
+    images: ["https://zsk.tech/og-image.png"],
   },
 };
+
+import SmoothScroll from "@/components/SmoothScroll";
 
 export default function RootLayout({
   children,
@@ -40,13 +42,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark">
       <body className={`${inter.className} min-h-screen bg-background text-foreground antialiased selection:bg-primary/30 flex flex-col`}>
-        <Navbar />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
+        <SmoothScroll>
+          <Navbar />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
