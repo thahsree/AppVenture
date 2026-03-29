@@ -147,7 +147,7 @@ export default function HeroSection() {
                   <directionalLight position={[5, 10, 5]} intensity={4} color="#ffffff" />
                   <DeviceScene />
                   <Environment preset="city" />
-                  <OrbitControls enableZoom={false} makeDefault />
+                  <OrbitControls enableZoom={true} makeDefault />
                 </Suspense>
               </Canvas>
             </ErrorBoundary>
