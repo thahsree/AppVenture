@@ -141,7 +141,7 @@ export default function HeroSection() {
             <ErrorBoundary fallback={
               <div className="w-64 h-64 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-primary to-accent opacity-30 blur-3xl animate-pulse" />
             }>
-              <Canvas camera={{ position: [0, 0, 5], fov: 30 }}>
+              <Canvas camera={{ position: [0, 0, 5], fov: 20 }}>
                 <Suspense fallback={null}>
                   <ambientLight intensity={3.5} />
                   <directionalLight position={[5, 10, 5]} intensity={4} color="#ffffff" />
