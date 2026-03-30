@@ -33,7 +33,7 @@ export default function SocialProofSection() {
   ];
 
   return (
-    <section className="py-20 bg-background relative overflow-hidden">
+    <section className="py-12 md:py-20 border-y border-white/5 relative bg-[#050505] overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {stats.map((stat, i) => (

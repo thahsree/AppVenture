@@ -135,7 +135,7 @@ export default function ServicesPage() {
                     </div>
                     
                     <Link href="/contact" className="group relative inline-flex items-center space-x-4 px-10 py-5 bg-primary text-white font-black text-xs uppercase tracking-[0.3em] rounded-2xl overflow-hidden active:scale-95 transition-all shadow-[0_10px_40px_rgba(99,102,241,0.3)]">
-                      <span className="relative z-10">Start Project with AppVenture</span>
+                      <span className="relative z-10">Start Project</span>
                       <ArrowRight className="w-4 h-4 relative z-10 transform group-hover:translate-x-2 transition-transform duration-300" />
                       <div className="absolute inset-0 bg-white/10 -translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
                     </Link>

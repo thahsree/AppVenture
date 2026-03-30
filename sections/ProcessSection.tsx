@@ -37,14 +37,14 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section className="py-24 bg-[#0a0a0a] relative z-10">
+    <section className="py-16 md:py-24 bg-[#050505] relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center max-w-2xl mx-auto mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+            className="text-3xl md:text-4xl font-bold tracking-tight mb-6"
           >
             How We Build <span className="text-gradient">Success</span>
           </motion.h2>
@@ -53,7 +53,7 @@ export default function ProcessSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-gray-400 text-lg"
+            className="text-gray-400 text-base md:text-lg"
           >
             Our proven engineering methodology ensures high-quality results delivered on time.
           </motion.p>

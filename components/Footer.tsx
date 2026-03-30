@@ -1,5 +1,5 @@
+import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
-import { Github, Twitter, Linkedin, Instagram } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,8 +10,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="font-bold text-3xl tracking-tighter flex items-center mb-4">
-              <span className="text-gradient font-bold tracking-tight">AppVenture</span>
+            <Link href="/" className="font-bold text-2xl tracking-tighter flex items-center space-x-2 mb-4 group">
+              <div className="flex items-center">
+                <img src="/logo.svg" alt="AppVenture Logo" className="w-8 h-8 object-contain" />
+              </div>
+              <span className="text-gradient font-black tracking-tight">AppVenture</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               We design and develop high-performance websites, mobile apps, and SaaS platforms that help businesses grow.

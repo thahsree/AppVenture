@@ -12,8 +12,8 @@ const stack = [
     border: "border-yellow-500/30"
   },
   { 
-    title: "Scale Without Limits", 
-    desc: "Building for 100 or 1,000,000 users with same reliability.", 
+    title: "Future-Proof Architecture", 
+    desc: "Building adaptable, clean-code foundations that evolve with your business.", 
     icon: Layers,
     color: "from-blue-500/20 to-indigo-500/20",
     border: "border-indigo-500/30"
@@ -50,7 +50,7 @@ const stack = [
 
 export default function TechStackSection() {
   return (
-    <section className="py-32 bg-background relative overflow-hidden">
+    <section className="py-20 md:py-32 bg-background relative overflow-hidden">
       {/* Decorative background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
       
@@ -62,10 +62,10 @@ export default function TechStackSection() {
           className="mb-20"
         >
           <span className="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Engineered for Excellence</span>
-          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-6">
             Our Core <span className="text-gradient">Principles</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             We don't follow trends. We set the standard for modern digital engineering 
             through rigorous architecture and obsessed craftsmanship.
           </p>
@@ -91,13 +91,13 @@ export default function TechStackSection() {
               
               <div className="relative h-full bg-[#0d0d0d]/90 backdrop-blur-xl p-8 rounded-[1.9rem] flex flex-col z-10 border border-white/10 group-hover:border-white/20 transition-colors duration-500 h-full">
                 {/* Icon Container */}
-                <div className="relative mb-8">
+                {/* <div className="relative mb-8">
                   <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg shadow-white/5`}>
                     <item.icon className="w-8 h-8 text-white" />
                   </div>
-                  {/* Subtle Glow behind icon */}
+                  Subtle Glow behind icon
                   <div className={`absolute -inset-2 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-500 -z-10`} />
-                </div>
+                </div> */}
 
                 <h3 className="text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-primary transition-colors duration-300">
                   {item.title}

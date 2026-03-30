@@ -59,20 +59,19 @@ export default function FeaturedProjectsSection() {
               <span>Case Studies</span>
             </motion.div>
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-6"
+            >
+              Engineering <span className="text-gradient">Masterpieces</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6"
-            >
-              Featured <span className="text-gradient">Works</span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-gray-400 text-lg leading-relaxed"
+              className="text-gray-400 text-base md:text-lg leading-relaxed"
             >
               We don't just build software; we engineer digital experiences that drive growth, 
               efficiency, and global impact.

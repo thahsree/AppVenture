@@ -19,16 +19,16 @@ export default function CTASection() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-primary/20 blur-[100px] z-0" />
           
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 max-sm:text-2xl">
+            <h2 className="text-6xl max-sm:text-3xl font-bold text-white mb-6">
               Let&apos;s Build Something <br className="hidden md:block"/>
               <span className="text-gradient">Powerful</span> Together
             </h2>
-            <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto max-sm:text-base">
+            <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto max-sm:text-base">
               Ready to scale your business with custom software? Connect with our engineering team today to discuss your next big project.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center space-x-2 px-10 py-5 rounded-full bg-primary hover:bg-primary/90 hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] text-white font-bold text-lg transition-all duration-300"
+              className="inline-flex items-center space-x-2 px-10 py-5 md:py-3 md:px-5 rounded-full bg-primary hover:bg-primary/90 hover:scale-105 hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] text-white font-bold text-lg transition-all duration-300"
             >
               <span className="max-sm:text-base">Start&nbsp;Your&nbsp;Project</span>
               <ArrowRight className="w-5 h-5" />

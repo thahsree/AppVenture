@@ -26,7 +26,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-24 bg-[#050505] relative z-10 overflow-hidden">
+    <section className="py-20 md:py-32 bg-background relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -z-10" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-[100px] -z-10" />
@@ -37,16 +37,16 @@ export default function TestimonialsSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+            className="text-3xl md:text-4xl font-bold tracking-tight mb-6"
           >
-            Client <span className="text-gradient">Testimonials</span>
+            What Our <span className="text-gradient">Clients Say</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-gray-400 text-lg"
+            className="text-gray-400 text-base md:text-lg"
           >
             Don&apos;t just take our word for it. Here is what leading businesses say about working with us.
           </motion.p>

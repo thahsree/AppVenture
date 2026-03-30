@@ -44,7 +44,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-24 bg-[#050505] relative z-10">
+    <section className="py-16 md:py-24 bg-[#050505] relative z-10">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <motion.div
@@ -60,7 +60,7 @@ export default function ServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
+            className="text-3xl md:text-4xl font-bold tracking-tight mb-6"
           >
             Services We Provide
           </motion.h2>
@@ -69,7 +69,7 @@ export default function ServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 text-lg"
+            className="text-gray-400 text-base md:text-lg"
           >
             From concept to deployment, we build end-to-end digital solutions that scale with your ambitions.
           </motion.p>

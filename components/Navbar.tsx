@@ -34,17 +34,18 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="flex items-center justify-between h-24 md:h-20">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 z-50">
+          <Link href="/" className="flex items-center space-x-2 z-50 group">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="font-bold text-3xl tracking-tighter flex items-center"
+              className="flex items-center"
             >
-              <span className="text-gradient font-bold tracking-tight">AppVenture</span>
+              <img src="/logo.svg" alt="AppVenture Logo" className="w-8 h-8 object-contain" />
             </motion.div>
+            <span className="text-gradient font-black text-2xl tracking-tight hidden sm:block">AppVenture</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -135,7 +136,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="inline-block mt-4 px-8 py-3 rounded-full bg-primary text-white font-medium hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all"
+                  className="text-xl inline-block mt-4 px-8 py-3 md:py-2 md:px-5 rounded-full bg-primary text-white font-medium hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all"
                 >
                   Start Project
                 </Link>

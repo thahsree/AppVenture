@@ -4,7 +4,7 @@ import { Environment, Float, OrbitControls, Preload, useGLTF, useTexture } from 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import { Component, ReactNode, Suspense, useEffect, useRef } from "react";
+import { Component, ReactNode, Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
 class ErrorBoundary extends Component<{children: ReactNode, fallback: ReactNode}, {hasError: boolean}> {
@@ -80,6 +80,23 @@ useTexture.preload("/SS.png");
 export default function HeroSection() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.1 });
+  const [webGLAvailable, setWebGLAvailable] = useState(true);
+
+  useEffect(() => {
+    // Proactively check for WebGL support to prevent context-creation crashes
+    try {
+      const canvas = document.createElement("canvas");
+      const support = !!(window.WebGLRenderingContext && 
+        (canvas.getContext("webgl") || canvas.getContext("experimental-webgl")));
+      setWebGLAvailable(support);
+      
+      if (!support) {
+        console.warn("WebGL not supported or disabled in this browser.");
+      }
+    } catch (e) {
+      setWebGLAvailable(false);
+    }
+  }, []);
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center pt-25 overflow-hidden">
@@ -106,26 +123,26 @@ export default function HeroSection() {
             </span>
           </motion.div>
           
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
             Build Scalable <br />
             <span className="text-gradient">Digital Products</span> <br />
             for Modern Businesses
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-400 mb-10 leading-relaxed max-w-xl">
+          <p className="text-base md:text-lg text-gray-400 mb-10 leading-relaxed max-w-xl">
             We design and develop high-performance websites, mobile apps, and SaaS platforms that help businesses grow and scale efficiently.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
-              className="px-8 py-4 rounded-full bg-primary text-white font-medium text-center hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] transition-all duration-300"
+              className="px-6 py-3 md:px-8 md:py-4 rounded-full bg-primary text-white font-medium text-center hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] transition-all duration-300"
             >
               Start a Project
             </Link>
             <Link
               href="/projects"
-              className="px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-medium text-center hover:bg-white/10 transition-all duration-300 backdrop-blur-md"
+              className="px-6 py-3 md:px-8 md:py-4 rounded-full bg-white/5 border border-white/10 text-white font-medium text-center hover:bg-white/10 transition-all duration-300 backdrop-blur-md"
             >
               View Our Work
             </Link>
@@ -140,7 +157,7 @@ export default function HeroSection() {
           className="h-[500px] lg:h-[700px] w-full relative"
         >
           <div className="absolute inset-0 z-0 flex items-center justify-center">
-            {isInView ? (
+            {isInView && webGLAvailable ? (
               <ErrorBoundary fallback={
                 <div className="w-64 h-64 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-primary to-accent opacity-30 blur-3xl animate-pulse" />
               }>
@@ -166,7 +183,7 @@ export default function HeroSection() {
                 </Canvas>
               </ErrorBoundary>
             ) : (
-              <div className="w-64 h-64 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-primary to-accent opacity-10 blur-3xl" />
+              <div className="w-64 h-64 md:w-96 md:h-96 rounded-full bg-gradient-to-tr from-primary to-accent opacity-10 blur-[150px] animate-pulse" />
             )}
           </div>
           
