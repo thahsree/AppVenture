@@ -36,7 +36,7 @@ export default function Navbar() {
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 z-50 group">
+          <Link href="/" className="flex items-center justify-center space-x-2 z-50 group">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -45,7 +45,7 @@ export default function Navbar() {
             >
               <img src="/logo.svg" alt="AppVenture Logo" className="w-8 h-8 object-contain" />
             </motion.div>
-            <span className="text-gradient font-black text-2xl tracking-tight hidden sm:block">AppVenture</span>
+            <span className="text-gradient font-bold text-2xl tracking-tight hidden sm:block">APPVENTURE</span>
           </Link>
 
           {/* Desktop Nav */}

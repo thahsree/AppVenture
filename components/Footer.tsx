@@ -11,10 +11,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
             <Link href="/" className="font-bold text-2xl tracking-tighter flex items-center space-x-2 mb-4 group">
-              <div className="flex items-center">
-                <img src="/logo.svg" alt="AppVenture Logo" className="w-8 h-8 object-contain" />
+              <div className="flex items-center justify-center">
+                <img src="/logo.svg" alt="AppVenture Logo" className="w-7 h-7 object-contain" />
               </div>
-              <span className="text-gradient font-black tracking-tight">AppVenture</span>
+              <span className="text-gradient font-bold tracking-tight">APPVENTURE</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               We design and develop high-performance websites, mobile apps, and SaaS platforms that help businesses grow.
