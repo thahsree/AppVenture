@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 function CustomSelect({ 
   label, 
@@ -202,7 +202,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-[10px] text-gray-500 font-bold uppercase tracking-[0.15em] mb-1">Call Us</p>
-                  <p className="text-base md:text-lg text-white font-bold group-hover:text-primary transition-colors">+1 (800) 123-4567</p>
+                  <p className="text-base md:text-lg text-white font-bold group-hover:text-primary transition-colors">7795031638</p>
                 </div>
               </div>
             </div>
@@ -290,7 +290,7 @@ export default function ContactPage() {
                     disabled={isSubmitting}
                     className="group relative w-full bg-primary hover:shadow-[0_0_50px_rgba(99,102,241,0.5)] text-white font-black text-xs md:text-sm uppercase tracking-[0.4em] rounded-2xl py-6 transition-all duration-500 disabled:opacity-70 overflow-hidden"
                   >
-                    <span className="relative z-10">{isSubmitting ? "Initiating..." : "Launch Discovery Call"}</span>
+                    <span className="relative z-10">{isSubmitting ? "Initiating..." : "Submit"}</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite] pointer-events-none" />
                   </button>
                 </form>

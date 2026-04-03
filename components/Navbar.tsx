@@ -27,12 +27,24 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   return (
-    <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-md border-b border-white/10" : "bg-transparent py-2"
-      }`}
-    >
+    <>
+      <header
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          scrolled || isOpen ? "bg-background/80 backdrop-blur-md border-b border-white/10" : "bg-transparent py-2"
+        }`}
+      >
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -94,57 +106,89 @@ export default function Navbar() {
             </button>
           </div>
         </div>
-      </div>
+        </div>
+      </header>
 
       {/* Mobile Nav */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100vh" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed inset-0 bg-background/95 backdrop-blur-xl z-40 md:hidden flex flex-col items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 md:hidden bg-black/60 backdrop-blur-sm"
+            onClick={() => setIsOpen(false)}
           >
-            <nav className="flex flex-col space-y-8 text-center text-2xl font-medium">
-              {navLinks.map((link, i) => {
-                const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
-                return (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 50 }}
-                    transition={{ delay: i * 0.1 }}
-                  >
-                    <Link
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`transition-colors ${isActive ? "text-primary" : "text-gray-300 hover:text-accent"}`}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-[#0a0a0a]/95 backdrop-blur-3xl border-l border-white/5 shadow-[0_0_100px_rgba(0,0,0,0.8)] flex flex-col justify-center px-10"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Background Glows for Depth */}
+              <div className="absolute top-1/4 -right-1/4 w-64 h-64 bg-primary/20 blur-[100px] rounded-full pointer-events-none" />
+              <div className="absolute bottom-1/4 -left-1/4 w-64 h-64 bg-accent/20 blur-[100px] rounded-full pointer-events-none" />
+
+              <nav className="flex flex-col space-y-6 relative z-10">
+                {navLinks.map((link, i) => {
+                  const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+                  return (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, x: 40 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 40 }}
+                      transition={{ type: "spring", damping: 20, stiffness: 100, delay: 0.1 + i * 0.05 }}
                     >
-                      {link.name}
-                    </Link>
-                  </motion.div>
-                );
-              })}
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 50 }}
-                transition={{ delay: navLinks.length * 0.1 }}
-              >
-                <Link
-                  href="/contact"
-                  onClick={() => setIsOpen(false)}
-                  className="text-xl inline-block mt-4 px-8 py-3 md:py-2 md:px-5 rounded-full bg-primary text-white font-medium hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all"
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className="group flex items-center space-x-4"
+                      >
+                        <span className={`text-4xl sm:text-5xl font-bold tracking-tighter transition-all duration-300 ${
+                          isActive ? "text-white" : "text-gray-500 group-hover:text-gray-200"
+                        }`}>
+                          {link.name}
+                        </span>
+                        {isActive && (
+                          <motion.div 
+                            layoutId="mobileActiveIndicator"
+                            className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-primary to-accent shadow-[0_0_10px_rgba(99,102,241,0.5)]" 
+                          />
+                        )}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ delay: 0.1 + navLinks.length * 0.05 + 0.1 }}
+                  className="pt-8 mt-4 border-t border-white/10"
                 >
-                  Start Project
-                </Link>
-              </motion.div>
-            </nav>
+                  <p className="text-gray-400 text-xs mb-5 uppercase tracking-widest font-semibold">Ready to build?</p>
+                  <Link
+                    href="/contact"
+                    onClick={() => setIsOpen(false)}
+                    className="inline-flex w-full items-center justify-center px-8 py-4 rounded-2xl bg-gradient-to-tr from-primary to-accent text-white font-semibold hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all transform hover:scale-[1.02] active:scale-95 text-lg"
+                  >
+                    Start Project
+                  </Link>
+                  <div className="mt-8 space-y-1 text-sm text-gray-500 tracking-wide font-medium">
+                    <p className="hover:text-white transition-colors cursor-pointer">contact@appventure.in</p>
+                    <p className="hover:text-white transition-colors cursor-pointer">+91 77950 31638</p>
+                  </div>
+                </motion.div>
+              </nav>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

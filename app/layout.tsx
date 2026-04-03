@@ -35,6 +35,7 @@ export const metadata: Metadata = {
 };
 
 import SmoothScroll from "@/components/SmoothScroll";
+import GlobalChatWidget from "@/components/GlobalChatWidget";
 
 export default function RootLayout({
   children,
@@ -50,6 +51,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <GlobalChatWidget />
         </SmoothScroll>
       </body>
     </html>
